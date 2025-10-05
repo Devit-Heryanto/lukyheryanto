@@ -7,9 +7,30 @@
 <style>
 body { margin:0; font-family:'Segoe UI', Arial, sans-serif; color:#333; }
 
+/* 🔥 Teks berjalan */
+.marquee {
+  background: #004080;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  padding: 10px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.marquee span {
+  display: inline-block;
+  padding-left: 100%;
+  animation: marquee 18s linear infinite;
+}
+@keyframes marquee {
+  0% { transform: translate(0, 0); }
+  100% { transform: translate(-100%, 0); }
+}
+
 /* Navbar */
 nav {
-  position: fixed; top:0; left:0; width:100%;
+  position: fixed; top:40px; left:0; width:100%;
   background-color: rgba(0,64,128,0.95);
   display:flex; justify-content:center; gap:20px;
   padding:15px 0; z-index:999;
@@ -17,22 +38,24 @@ nav {
 nav a { color:#fff; text-decoration:none; font-weight:bold; font-size:16px; cursor:pointer; }
 nav a:hover { color:#ffd700; }
 
-/* Hero */
+/* Hero (slideshow) */
 #hero {
   height:100vh; width:100%;
-  background: url('https://i.imgur.com/Pb621kQ.jpeg') center/cover no-repeat;
+  background-size: cover;
+  background-position: center;
   display:flex; align-items:center; justify-content:center;
-  text-align:center; color:#fff; transition: opacity 0.5s ease;
+  text-align:center; color:#fff;
+  transition: opacity 0.5s ease;
 }
 #hero.hidden { opacity:0; pointer-events:none; height:0; overflow:hidden; }
 #hero h1 { background-color: rgba(0,0,0,0.5); padding:20px; border-radius:10px; font-size:2.2em; }
 
 /* Sections */
-section { display:none; max-width:1000px; margin:80px auto; padding:40px 20px; }
+section { display:none; max-width:1000px; margin:120px auto; padding:40px 20px; }
 section.active { display:block; }
 h2 { color:#004080; margin-bottom:20px; }
 
-/* Produk - tampil besar ke bawah */
+/* Produk */
 .produk-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -61,6 +84,11 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
 </style>
 </head>
 <body>
+
+<!-- 🔥 Marquee -->
+<div class="marquee">
+  <span>🚛 Selamat datang di PT Buana Abadi Nugraha — Solusi Ban Terpercaya untuk Kendaraan Niaga & Industri 🚛</span>
+</div>
 
 <!-- Navbar -->
 <nav>
@@ -160,17 +188,12 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
   <p><strong>Email:</strong> <a href="mailto:lucky@tyresco.com">lucky@tyresco.com</a></p>
   <p><strong>Alamat:</strong> Jl. Bandengan Selatan No.43, Komplek Ruko Puri Deta Mas Blok A No.26, Jakarta Utara – 14450, Indonesia</p>
 
-  <form action="mailto:lucky@tyresco.com" method="post" enctype="text/plain">
-    <label>Nama:</label><br>
-    <input type="text" name="Nama" required><br><br>
-    <label>Email:</label><br>
-    <input type="email" name="Email" required><br><br>
-    <label>Pesan:</label><br>
-    <textarea name="Pesan" rows="4" required></textarea><br><br>
-    <button type="submit" class="btn-whatsapp">Kirim Manual ke Email</button>
-  </form>
+  <!-- Tombol kirim email langsung -->
+  <a href="mailto:lucky@tyresco.com?subject=Permintaan%20Informasi&body=Halo%20Pak%20Luky,%0A%0ANama:%20%0AEmail:%20%0APesan:%20" 
+     class="btn-whatsapp">📧 Kirim Email Manual</a>
 
-  <a class="btn-whatsapp" href="https://wa.me/6281212999810" target="_blank">Kirim via WhatsApp</a>
+  <!-- Tombol kirim WA -->
+  <a class="btn-whatsapp" href="https://wa.me/6281212999810" target="_blank">💬 Kirim via WhatsApp</a>
 
   <h3>Peta Lokasi</h3>
   <iframe 
@@ -184,25 +207,68 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
 </footer>
 
 <script>
+/* 🖼️ Ganti gambar hero di sini (cukup ubah URL di daftar ini) */
+const gambarHero = [
+  "https://i.imgur.com/Pb621kQ.jpeg",
+  "https://i.imgur.com/R6mWiRH.jpeg",
+  "https://i.imgur.com/TzhQMSw.jpeg"
+];
+
+let index = 0;
+const hero = document.getElementById("hero");
+
+function gantiHero() {
+  hero.style.backgroundImage = `url('${gambarHero[index]}')`;
+  index = (index + 1) % gambarHero.length;
+}
+
+// Set pertama kali & ganti otomatis
+gantiHero();
+setInterval(gantiHero, 4000);
+
 function showSection(id){
   document.getElementById('hero').classList.add('hidden');
   document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   window.scrollTo({top:0, behavior:'smooth'});
 }
+
 function showProduk(id){
   document.querySelectorAll('.produk-content').forEach(p=>p.style.display='none');
   document.getElementById(id).style.display='grid';
   window.scrollTo({top: document.getElementById(id).offsetTop - 80, behavior:'smooth'});
 }
 </script>
+
 </body>
 </html>
+
+ 
+  
+
 
 
 
 
   
+
+
+  
+
+  
+
+
+
+
+
+    
+
+
+
+
+
+  
+
 
 
 
