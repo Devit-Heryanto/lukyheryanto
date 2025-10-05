@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PT Buana Abadi Nugraha – Luky Heryanto</title>
+<style>
+body { margin:0; font-family:'Segoe UI', Arial, sans-serif; color:#333; }
+
+/* Navbar */
+nav {
+  position: fixed; top:0; left:0; width:100%;
+  background-color: rgba(0,64,128,0.95);
+  display:flex; justify-content:center; gap:20px;
+  padding:15px 0; z-index:999;
+}
+nav a { color:#fff; text-decoration:none; font-weight:bold; font-size:16px; cursor:pointer; }
+nav a:hover { color:#ffd700; }
+
+/* Hero */
+#hero {
+  height:100vh; width:100%;
+  background: url('https://i.imgur.com/Pb621kQ.jpeg') center/cover no-repeat;
+  display:flex; align-items:center; justify-content:center;
+  text-align:center; color:#fff; transition: opacity 0.5s ease;
+}
+#hero.hidden { opacity:0; pointer-events:none; height:0; overflow:hidden; }
+#hero h1 { background-color: rgba(0,0,0,0.5); padding:20px; border-radius:10px; font-size:2.2em; }
+
+/* Sections */
+section { display:none; max-width:1000px; margin:80px auto; padding:40px 20px; }
+section.active { display:block; }
+h2 { color:#004080; margin-bottom:20px; }
+.produk-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap:20px; }
+.produk-grid img { width:100%; border-radius:10px; }
+
+/* Footer & Button */
+.footer { background-color:#222; color:#ffd700; text-align:center; padding:20px; font-size:14px; }
+.btn-whatsapp { display:inline-block; background:#25D366; color:#fff; padding:12px 25px; border-radius:30px; text-decoration:none; font-weight:bold; margin-top:10px; }
+.produk-content { display:none; margin-top:20px; }
+button { padding:10px 15px; margin:5px; border:none; background:#004080; color:#fff; border-radius:5px; cursor:pointer; }
+button:hover { background:#0070c0; }
+input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius:5px; }
+</style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav>
+  <a onclick="showSection('home')">Home</a>
+  <a onclick="showSection('tentang')">Tentang Saya</a>
+  <a onclick="showSection('produk')">Produk</a>
+  <a onclick="showSection('kontak')">Kontak</a>
+</nav>
+
+<!-- Hero -->
+<div id="hero">
+  <h1>Welcome to Web Luky Heryanto</h1>
+</div>
+
+<!-- Home -->
+<section id="home" class="active">
+  <h2>PT Buana Abadi Nugraha – Luky Heryanto</h2>
+  <p><strong>Alamat:</strong> Jl. Bandengan Selatan No.43, Komplek Ruko Puri Deta Mas Blok A No.26, Jakarta Utara – 14450, Indonesia</p>
+  <p><strong>Telp:</strong> (021) 66690999 | <strong>Fax:</strong> (021) 66690999</p>
+</section>
+
+<!-- Tentang -->
+<section id="tentang">
+  <h2>Tentang Saya</h2>
+  <p>Saya Luky Heryanto, sales dan marketing PT Buana Abadi Nugraha, perusahaan distribusi ban kendaraan niaga dan industri...</p>
+  <h3>Visi</h3>
+  <p>Menjadi mitra terpercaya dalam penyediaan ban kendaraan niaga dan industri di Indonesia.</p>
+  <h3>Misi</h3>
+  <ul>
+    <li>Memberikan produk ban berkualitas dengan harga kompetitif.</li>
+    <li>Menyediakan layanan terbaik dan solusi tepat guna untuk pelanggan.</li>
+    <li>Menjalin hubungan jangka panjang berdasarkan kepercayaan dan profesionalisme.</li>
+  </ul>
+</section>
+
+<!-- Produk -->
+<section id="produk">
+  <h2>Produk</h2>
+  <div style="margin-bottom:20px;">
+    <button onclick="showProduk('apollo')">Apollo</button>
+    <button onclick="showProduk('goodyear')">Goodyear</button>
+    <button onclick="showProduk('gajah')">Gajah Tunggal</button>
+    <button onclick="showProduk('hankook')">Hankook</button>
+    <button onclick="showProduk('blackhawk')">Blackhawk</button>
+  </div>
+
+  <!-- Apollo -->
+  <div id="apollo" class="produk-content produk-grid">
+    <img src="https://i.imgur.com/V0StVNF.jpeg" alt="Apollo 1">
+    <img src="https://i.imgur.com/3vIaOix.jpeg" alt="Apollo 2">
+    <img src="https://i.imgur.com/aRK72Vd.jpeg" alt="Apollo 3">
+    <img src="https://i.imgur.com/BFVMhJP.jpeg" alt="Apollo 4">
+    <img src="https://i.imgur.com/IUHay6p.jpeg" alt="Apollo 5">
+  </div>
+
+  <!-- Goodyear -->
+  <div id="goodyear" class="produk-content produk-grid">
+    <img src="https://i.imgur.com/ZsOexZY.jpeg" alt="Goodyear 1">
+    <img src="https://i.imgur.com/0vArZHB.jpeg" alt="Goodyear 2">
+    <img src="https://i.imgur.com/R6mWiRH.jpeg" alt="Goodyear 3">
+    <img src="https://i.imgur.com/8kC05qm.jpeg" alt="Goodyear 4">
+    <img src="https://i.imgur.com/TBna5KZ.jpeg" alt="Goodyear 5">
+  </div>
+
+  <!-- Gajah Tunggal -->
+  <div id="gajah" class="produk-content produk-grid">
+    <img src="https://i.imgur.com/vAg0uhC.jpeg" alt="Gajah 1">
+    <img src="https://i.imgur.com/TbTIMMS.jpeg" alt="Gajah 2">
+    <img src="https://i.imgur.com/lFCo7M4.png" alt="Gajah 3">
+    <img src="https://i.imgur.com/kcPng8F.jpeg" alt="Gajah 4">
+    <img src="https://i.imgur.com/IGLVraZ.jpeg" alt="Gajah 5">
+  </div>
+
+  <!-- Hankook -->
+  <div id="hankook" class="produk-content produk-grid">
+    <img src="https://i.imgur.com/OAkTVm1.jpeg" alt="Hankook 1">
+    <img src="https://i.imgur.com/BntAnKp.jpeg" alt="Hankook 2">
+    <img src="https://i.imgur.com/Vd3FHrT.jpeg" alt="Hankook 3">
+    <img src="https://i.imgur.com/kA4uuN7.jpeg" alt="Hankook 4">
+    <img src="https://i.imgur.com/lEGfAmo.jpeg" alt="Hankook 5">
+  </div>
+
+  <!-- Blackhawk -->
+  <div id="blackhawk" class="produk-content produk-grid">
+    <img src="https://i.imgur.com/TzhQMSw.jpeg" alt="Blackhawk 1">
+    <img src="https://i.imgur.com/J5AdJwT.jpeg" alt="Blackhawk 2">
+    <img src="https://i.imgur.com/uBgYJCp.jpeg" alt="Blackhawk 3">
+    <img src="https://i.imgur.com/Zr8NeKQ.jpeg" alt="Blackhawk 4">
+    <img src="https://i.imgur.com/AC32RPW.jpeg" alt="Blackhawk 5">
+  </div>
+</section>
+
+<!-- Kontak -->
+<section id="kontak">
+  <h2>Kontak</h2>
+  <p><strong>Telepon / WhatsApp:</strong> <a href="https://wa.me/6281212999810" target="_blank">0812-1299-9810</a></p>
+  <p><strong>Email:</strong> <a href="mailto:lucky@tyresco.com">lucky@tyresco.com</a></p>
+  <p><strong>Alamat:</strong> Jl. Bandengan Selatan No.43, Komplek Ruko Puri Deta Mas Blok A No.26, Jakarta Utara – 14450, Indonesia</p>
+
+  <form action="mailto:lucky@tyresco.com" method="post" enctype="text/plain">
+    <label>Nama:</label><br>
+    <input type="text" name="Nama" required><br><br>
+    <label>Email:</label><br>
+    <input type="email" name="Email" required><br><br>
+    <label>Pesan:</label><br>
+    <textarea name="Pesan" rows="4" required></textarea><br><br>
+    <button type="submit" class="btn-whatsapp">Kirim Manual ke Email</button>
+  </form>
+
+  <a class="btn-whatsapp" href="https://wa.me/6281212999810" target="_blank">Kirim via WhatsApp</a>
+
+  <h3>Peta Lokasi</h3>
+  <iframe 
+    src="https://www.google.com/maps?q=Jl.+Bandengan+Selatan+No.+43,+Komplek+Ruko+Puri+Deta+Mas+Blok+A+No+26,+Jakarta+Utara&output=embed" 
+    width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  &copy; 2025 PT Buana Abadi Nugraha – Luky Heryanto. All rights reserved.
+</footer>
+
+<script>
+function showSection(id){
+  document.getElementById('hero').classList.add('hidden');
+  document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+function showProduk(id){
+  document.querySelectorAll('.produk-content').forEach(p=>p.style.display='none');
+  document.getElementById(id).style.display='grid';
+  window.scrollTo({top: document.getElementById(id).offsetTop - 80, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
