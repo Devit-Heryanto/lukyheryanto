@@ -31,8 +31,25 @@ nav a:hover { color:#ffd700; }
 section { display:none; max-width:1000px; margin:80px auto; padding:40px 20px; }
 section.active { display:block; }
 h2 { color:#004080; margin-bottom:20px; }
-.produk-grid { display:grid; grid-template-columns: repeat(auto-fill,minmax(200px,1fr)); gap:20px; }
-.produk-grid img { width:100%; border-radius:10px; }
+
+/* Produk - tampil besar ke bawah */
+.produk-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
+}
+.produk-grid img {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  display: block;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease;
+}
+.produk-grid img:hover {
+  transform: scale(1.05);
+}
 
 /* Footer & Button */
 .footer { background-color:#222; color:#ffd700; text-align:center; padding:20px; font-size:14px; }
@@ -181,3 +198,11 @@ function showProduk(id){
 </script>
 </body>
 </html>
+
+
+
+
+  
+
+
+
