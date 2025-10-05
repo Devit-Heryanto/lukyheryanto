@@ -188,8 +188,8 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
   <p><strong>Email:</strong> <a href="mailto:lucky@tyresco.com">lucky@tyresco.com</a></p>
   <p><strong>Alamat:</strong> Jl. Bandengan Selatan No.43, Komplek Ruko Puri Deta Mas Blok A No.26, Jakarta Utara – 14450, Indonesia</p>
 
-  <!-- Tombol kirim email langsung -->
-  <a href="mailto:lucky@tyresco.com?subject=Permintaan%20Informasi&body=Halo%20Pak%20Luky,%0A%0ANama:%20%0AEmail:%20%0APesan:%20" 
+  <!-- Tombol kirim email manual -->
+  <a href="mailto:lucky@tyresco.com?subject=Permintaan%20Informasi&body=Halo%20Pak%20Luky,%0A%0ASaya%20ingin%20bertanya%20mengenai%20produk%20ban%20Anda.%20Mohon%20informasi%20lebih%20lanjut.%0A%0ATerima%20kasih." 
      class="btn-whatsapp">📧 Kirim Email Manual</a>
 
   <!-- Tombol kirim WA -->
@@ -207,25 +207,22 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
 </footer>
 
 <script>
-/* 🖼️ Ganti gambar hero di sini (cukup ubah URL di daftar ini) */
+/* 🖼️ Slideshow Hero */
 const gambarHero = [
   "https://i.imgur.com/Pb621kQ.jpeg",
   "https://i.imgur.com/R6mWiRH.jpeg",
   "https://i.imgur.com/TzhQMSw.jpeg"
 ];
-
 let index = 0;
 const hero = document.getElementById("hero");
-
 function gantiHero() {
   hero.style.backgroundImage = `url('${gambarHero[index]}')`;
   index = (index + 1) % gambarHero.length;
 }
-
-// Set pertama kali & ganti otomatis
 gantiHero();
 setInterval(gantiHero, 4000);
 
+/* 🏠 Navigasi Section */
 function showSection(id){
   document.getElementById('hero').classList.add('hidden');
   document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
@@ -233,6 +230,7 @@ function showSection(id){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
+/* 🛞 Produk */
 function showProduk(id){
   document.querySelectorAll('.produk-content').forEach(p=>p.style.display='none');
   document.getElementById(id).style.display='grid';
@@ -243,7 +241,25 @@ function showProduk(id){
 </body>
 </html>
 
- 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
 
 
@@ -268,6 +284,7 @@ function showProduk(id){
 
 
   
+
 
 
 
