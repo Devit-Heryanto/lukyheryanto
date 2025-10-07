@@ -38,17 +38,43 @@ nav {
 nav a { color:#fff; text-decoration:none; font-weight:bold; font-size:16px; cursor:pointer; }
 nav a:hover { color:#ffd700; }
 
-/* Hero (slideshow) */
+/* 🔁 Hero gambar berjalan kanan ➝ kiri dengan jeda */
 #hero {
-  height:100vh; width:100%;
-  background-size: cover;
-  background-position: center;
-  display:flex; align-items:center; justify-content:center;
-  text-align:center; color:#fff;
-  transition: opacity 0.5s ease;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
 }
-#hero.hidden { opacity:0; pointer-events:none; height:0; overflow:hidden; }
-#hero h1 { background-color: rgba(0,0,0,0.5); padding:20px; border-radius:10px; font-size:2.2em; }
+.hero-slider {
+  display: flex;
+  width: 600vw; /* total 6 gambar */
+  animation: slideWithPause 36s ease-in-out infinite;
+}
+.hero-slider img {
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+/* Animasi: 2 detik diam + 4 detik jalan per gambar */
+@keyframes slideWithPause {
+  0%   { transform: translateX(0); }
+  11%  { transform: translateX(0); }          /* Diam */
+  17%  { transform: translateX(-100vw); }     /* Slide 1 → 2 */
+  28%  { transform: translateX(-100vw); }     /* Diam */
+  34%  { transform: translateX(-200vw); }     /* Slide 2 → 3 */
+  45%  { transform: translateX(-200vw); }     /* Diam */
+  51%  { transform: translateX(-300vw); }     /* Slide 3 → 4 */
+  62%  { transform: translateX(-300vw); }     /* Diam */
+  68%  { transform: translateX(-400vw); }     /* Slide 4 → 5 */
+  79%  { transform: translateX(-400vw); }     /* Diam */
+  85%  { transform: translateX(-500vw); }     /* Slide 5 → 6 */
+  100% { transform: translateX(-500vw); }     /* Diam */
+}
+
+/* Sembunyikan hero saat berpindah halaman */
+#hero.hidden { opacity:0; pointer-events:none; height:0; overflow:hidden; transition: opacity 0.5s ease; }
 
 /* Sections */
 section { display:none; max-width:1000px; margin:120px auto; padding:40px 20px; }
@@ -87,20 +113,28 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
 
 <!-- 🔥 Marquee -->
 <div class="marquee">
-  <span>🚛 Selamat datang di PT Buana Abadi Nugraha — Solusi Ban Terpercaya untuk Kendaraan Niaga & Industri 🚛</span>
+  <span>🚛 Selamat datang di PT Buana Abadi Nugraha — Solusi Ban Terpercaya untuk Kendaraan Niaga & Industri —  Hubungi Luky Heryanto No Telep : 081212999810  🚛</span>
 </div>
 
 <!-- Navbar -->
 <nav>
-  <a onclick="showSection('home')">Home</a>
+  <a onclick="showSection('home')">Beranda</a>
   <a onclick="showSection('tentang')">Tentang Saya</a>
   <a onclick="showSection('produk')">Produk</a>
-  <a onclick="showSection('kontak')">Kontak</a>
+  <a onclick="showSection('kontak')">Hubungi Kami</a>
 </nav>
 
-<!-- Hero -->
+<!-- Hero (gambar berjalan kanan ➝ kiri) -->
 <div id="hero">
-  <h1>Selamat Datang di Website Luky Heryanto</h1>
+  <div class="hero-slider">
+    <img src="https://i.imgur.com/Pb621kQ.jpeg" alt="Slide 1">
+    <img src="https://i.imgur.com/R6mWiRH.jpeg" alt="Slide 2">
+    <img src="https://i.imgur.com/TzhQMSw.jpeg" alt="Slide 3">
+    <!-- Duplikasi untuk animasi loop -->
+    <img src="https://i.imgur.com/Pb621kQ.jpeg" alt="Slide 1 copy">
+    <img src="https://i.imgur.com/R6mWiRH.jpeg" alt="Slide 2 copy">
+    <img src="https://i.imgur.com/TzhQMSw.jpeg" alt="Slide 3 copy">
+  </div>
 </div>
 
 <!-- Home -->
@@ -135,7 +169,6 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
     <button onclick="showProduk('blackhawk')">Blackhawk</button>
   </div>
 
-  <!-- Apollo -->
   <div id="apollo" class="produk-content produk-grid">
     <img src="https://i.imgur.com/V0StVNF.jpeg" alt="Apollo 1">
     <img src="https://i.imgur.com/3vIaOix.jpeg" alt="Apollo 2">
@@ -144,7 +177,6 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
     <img src="https://i.imgur.com/IUHay6p.jpeg" alt="Apollo 5">
   </div>
 
-  <!-- Goodyear -->
   <div id="goodyear" class="produk-content produk-grid">
     <img src="https://i.imgur.com/ZsOexZY.jpeg" alt="Goodyear 1">
     <img src="https://i.imgur.com/0vArZHB.jpeg" alt="Goodyear 2">
@@ -153,7 +185,6 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
     <img src="https://i.imgur.com/TBna5KZ.jpeg" alt="Goodyear 5">
   </div>
 
-  <!-- Gajah Tunggal -->
   <div id="gajah" class="produk-content produk-grid">
     <img src="https://i.imgur.com/vAg0uhC.jpeg" alt="Gajah 1">
     <img src="https://i.imgur.com/TbTIMMS.jpeg" alt="Gajah 2">
@@ -162,7 +193,6 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
     <img src="https://i.imgur.com/IGLVraZ.jpeg" alt="Gajah 5">
   </div>
 
-  <!-- Hankook -->
   <div id="hankook" class="produk-content produk-grid">
     <img src="https://i.imgur.com/OAkTVm1.jpeg" alt="Hankook 1">
     <img src="https://i.imgur.com/BntAnKp.jpeg" alt="Hankook 2">
@@ -171,7 +201,6 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
     <img src="https://i.imgur.com/lEGfAmo.jpeg" alt="Hankook 5">
   </div>
 
-  <!-- Blackhawk -->
   <div id="blackhawk" class="produk-content produk-grid">
     <img src="https://i.imgur.com/TzhQMSw.jpeg" alt="Blackhawk 1">
     <img src="https://i.imgur.com/J5AdJwT.jpeg" alt="Blackhawk 2">
@@ -188,11 +217,9 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
   <p><strong>Email:</strong> <a href="mailto:lucky@tyresco.com">lucky@tyresco.com</a></p>
   <p><strong>Alamat:</strong> Jl. Bandengan Selatan No.43, Komplek Ruko Puri Deta Mas Blok A No.26, Jakarta Utara – 14450, Indonesia</p>
 
-  <!-- Tombol kirim email manual -->
   <a href="mailto:lucky@tyresco.com?subject=Permintaan%20Informasi&body=Halo%20Pak%20Luky,%0A%0ASaya%20ingin%20bertanya%20mengenai%20produk%20ban%20Anda.%20Mohon%20informasi%20lebih%20lanjut.%0A%0ATerima%20kasih." 
      class="btn-whatsapp">📧 Kirim Email Manual</a>
 
-  <!-- Tombol kirim WA -->
   <a class="btn-whatsapp" href="https://wa.me/6281212999810" target="_blank">💬 Kirim via WhatsApp</a>
 
   <h3>Peta Lokasi</h3>
@@ -207,22 +234,6 @@ input, textarea { width:100%; padding:10px; border:1px solid #ccc; border-radius
 </footer>
 
 <script>
-/* 🖼️ Slideshow Hero */
-const gambarHero = [
-  "https://i.imgur.com/Pb621kQ.jpeg",
-  "https://i.imgur.com/R6mWiRH.jpeg",
-  "https://i.imgur.com/TzhQMSw.jpeg"
-];
-let index = 0;
-const hero = document.getElementById("hero");
-function gantiHero() {
-  hero.style.backgroundImage = `url('${gambarHero[index]}')`;
-  index = (index + 1) % gambarHero.length;
-}
-gantiHero();
-setInterval(gantiHero, 4000);
-
-/* 🏠 Navigasi Section */
 function showSection(id){
   document.getElementById('hero').classList.add('hidden');
   document.querySelectorAll('section').forEach(s=>s.classList.remove('active'));
@@ -230,7 +241,6 @@ function showSection(id){
   window.scrollTo({top:0, behavior:'smooth'});
 }
 
-/* 🛞 Produk */
 function showProduk(id){
   document.querySelectorAll('.produk-content').forEach(p=>p.style.display='none');
   document.getElementById(id).style.display='grid';
@@ -240,15 +250,6 @@ function showProduk(id){
 
 </body>
 </html>
-
-  
-
-
-
-
-
-
-
 
 
 
@@ -284,6 +285,7 @@ function showProduk(id){
 
 
   
+
 
 
 
